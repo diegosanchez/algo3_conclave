@@ -1,0 +1,20 @@
+@startuml
+
+' Force visibility symbols instead of icons
+skinparam ClassAttributeIconSize 0
+
+class Derivar {
+    - h : valor
+
+    + Derivar(h : Double)
+    + evaluarEn(F : Funcion, x0 : Punto) : Punto
+    + getH(valor : Double)
+}
+
+class Funcion {
+
+    + evaluarEn(x : Punto)
+}
+
+Derivar ..> Funcion: "<<use>>"
+@enduml

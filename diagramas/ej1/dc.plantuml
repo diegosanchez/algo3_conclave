@@ -1,0 +1,57 @@
+@startuml
+
+' Force visibility symbols instead of icons
+skinparam ClassAttributeIconSize 0
+
+interface Regla {
+    Object verificar()
+}
+
+Regla <|.. ReglaDosTercios
+Regla <|.. ReglaIdsValido
+Regla <|.. ReglaVoto
+
+class Conclave {
+    + Conclave(impersonalizador, cardenales)
+    + verificar();
+}
+
+class ReglaDosTercios {
+    + ReglaDosTercios(cardenales)
+}
+
+class ReglaIdsValido {
+    + ReglaIdsValido(impersonalizador, cardenales)
+}
+
+class ReglaVoto {
+    + ReglaVoto(cardenales)
+}
+
+class Impersonalizador {
+    + validar(idsParaValidate)
+}
+
+Conclave *- "*" Regla
+
+ReglaIdsValido ..> Impersonalizador: "<<use>>"
+
+Conclave ..> Cardenal: "<<use>>"
+
+class Cardenal {
+    - id
+
+    + Cardenal(String id)
+
+    + votar(Cardenal candidato)
+    + List<String> listaDeVotos(List<Cardenal> cardenales)
+    + double contarEn(List<String> listaDeVotados)
+    + void validarIds(Impersonalizador i)
+}
+
+Cardenal o- Cardenal
+
+HumoBlanco <.. Conclave: "<<instanciate>>"
+HumoNegro <.. Conclave: "<<instanciate>>"
+
+@enduml

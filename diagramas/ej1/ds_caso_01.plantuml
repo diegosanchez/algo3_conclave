@@ -1,0 +1,15 @@
+@startuml
+
+create "id3: Cardenal"
+":TestCase" -> "id3: Cardenal": Cardenal(id)
+":TestCase" -> ": ReglaIdsValido": ReglaIdsValido(i, id3)
+": ReglaIdsValido" -> ": ReglaIdsValido": ReglaIdsValido(i, id3)
+loop "Para cada cardenal"
+    ": ReglaIdsValido" -> "id3: Cardenal": verificar()
+    create ": VotoInvalido"
+    "id3: Cardenal" -> ": VotoInvalido": throw
+end loop
+
+": ReglaIdsValido" --> ":TestCase": new HumoNegro()
+
+@enduml

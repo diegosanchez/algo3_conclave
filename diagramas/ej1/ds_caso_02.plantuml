@@ -1,0 +1,17 @@
+@startuml
+title Caso02
+
+create "id1:Cardenal"
+":TestCase" -> "id1:Cardenal":Cardenal("id1")
+create "id6:Cardenal"
+":TestCase" -> "id6:Cardenal":Cardenal("id6")
+":TestCase" -> ":ReglaUnanimidad":ReglaUnanimidad(i, id1, id6)
+":ReglaUnanimidad" -> "id1:Cardenal": listaDeVotos(listaDeCardenales)
+return [id6..id6]
+loop "Para cada cardenal"
+    ":ReglaUnanimidad" -> ":Cardenal": contarEn(listaDeVotos)
+end loop
+
+":ReglaUnanimidad" --> ":TestCase": HumoNegro
+
+@enduml

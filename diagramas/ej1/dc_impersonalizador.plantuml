@@ -1,0 +1,8 @@
+@startuml
+
+class Impersonalizador {
+    + validar(id1, id2)
+}
+
+Impersonalizador .> IdInvalido: "<<instanciate>>"
+@enduml

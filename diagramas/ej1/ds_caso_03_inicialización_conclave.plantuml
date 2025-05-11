@@ -1,0 +1,20 @@
+@startuml
+
+create "id1: Cardenal"
+":TestCase" -> "id1: Cardenal": Cardenal("id1")
+create "id6: Cardenal"
+":TestCase" -> "id6: Cardenal": Cardenal("id6")
+create "i: Impersonalizador"
+":TestCase" -> "i: Impersonalizador": Impersonalizador()
+create ":Conclave"
+":TestCase" -> ":Conclave": Conclave(i, id1..id6)
+create ":ReglaDosTercios"
+":Conclave" -> ":ReglaDosTercios": ReglaDosTercios(id1..id6)
+":Conclave" -> ":ReglaIdsValido": ReglaIdsValido(i, id1..id6)
+":Conclave" -> ":ReglaVoto": ReglaVoto(id1..id6)
+
+@enduml
+
+
+
+
